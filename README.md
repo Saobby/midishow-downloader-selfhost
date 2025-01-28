@@ -4,7 +4,7 @@
 # Usage
 1. Set up Redis  
 Download and install Redis for Windows.  
-   Since Redis does not officially support windows, you can download it from [here](https://github.com/tporadowski/redis/releases/tag/v5.0.14.1).
+   Since Redis does *not* officially support windows, you can download it from [here](https://github.com/tporadowski/redis/releases/tag/v5.0.14.1).
    
 2. Start Redis service  
 Press `Win+R`, input `services.msc`, and press `Enter`  
@@ -19,7 +19,8 @@ Download the latest build of the downloader.
    - [32bit download](https://nightly.link/Saobby/midishow-downloader-selfhost/workflows/build.yaml/main/midishow_downloader-x86.zip)
     - [64bit download](https://nightly.link/Saobby/midishow-downloader-selfhost/workflows/build.yaml/main/midishow_downloader-x86.zip)  
     
-    If you don't know your computer's architecture, just download the 32-bit version.
+    If you don't know your computer's architecture, just download the `32-bit` version.  
+    You are supposed to get a .zip archive. **Please extract it after you download.**
 
 5. Set your midishow account  
 Open `config.toml` and put your midishow username and password below `midishow.accounts` section.  
@@ -41,7 +42,8 @@ Open `config.toml` and put your midishow username and password below `midishow.a
 
 6. Start the downloader  
 Double click `./server.exe` to run the downloader.  
-   If everything goes well, your browser should automatically open the downloader's webpage.
+   If everything goes well, your browser should automatically open the downloader's webpage.  
+   Type in the midi's url and enjoy!
 # Troubleshooting
 If you have any problems, please be free to let me know at [Issues](https://github.com/Saobby/midishow-downloader-selfhost/issues).  
 Please include the error log while reporting bugs.
