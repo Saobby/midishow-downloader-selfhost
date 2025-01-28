@@ -1,0 +1,12 @@
+[redis]
+host = "127.0.0.1"
+port = 6379
+password = ""
+
+[[midishow.accounts]]
+username = ""
+password = ""
+
+[server]
+host = "127.0.0.1"
+port = -1

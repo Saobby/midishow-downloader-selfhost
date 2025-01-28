@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <meta name="description" content="免积分快速在线下载midishow网站上的MIDI文件">
+        <link rel="stylesheet" type="text/css" href="/static/css/common.css">
+        <link rel="stylesheet" type="text/css" href="/static/css/wux.css">
+        <title>Midishow MIDI 快速下载机</title>
+    </head>
+    <body>
+        <div class="wux-container wux-typo">
+            <h2>Midishow MIDI 快速下载机</h2>
+            <input type="text" class="wux-form-input wux-form-input-md" style="width:calc( 100% - 120px );display:inline-block;" id="url" placeholder="MIDI 查看页网址, 例如 https://www.midishow.com/midi/42011.html">
+            <button type="button" class="wux-btn wux-btn-primary" id="download-btn" onclick="download();"><img src="/static/image/icon/download-white.svg" alt="" width="16px" class="middle"><span class="middle">下载</span></button><br>
+            <div id="notice-div">
+                <h2>注意事项</h2>
+                <ul>
+                    <li>这个工具可以快速下载 Midishow 网站 (midishow.com) 上的 MIDI 文件，只需输入 MIDI 查看页面链接即可</li>
+                    <li><b>请勿将下载的 MIDI 用于非法用途</b>，包括未经 MIDI 作者允许转载发布到其它网站等</li>
+                    <li>有任何问题，请到 Github issues 反馈，注意附带错误日志</li>
+                </ul>
+            </div>
+            <div id="error-div" hidden>
+                <h2>发生错误</h2>
+                <span>错误信息:</span><span id="error-msg" class="result"></span>
+            </div>
+            <div id="success-div" hidden>
+                <h2>下载成功</h2>
+                <a target="_blank" id="download-link"><button class="wux-btn wux-btn-primary wux-btn-lg" onclick="set_btn_html(this,'已开始下载');setTimeout(set_btn_html,1000,this);"><img src="/static/image/icon/download-white.svg" alt="" width="16px" class="middle"><span class="middle">保存 MIDI</span></button></a>
+                <h3>预览 MIDI</h3>
+                <script src="/static/js/midi_player.js"></script>
+                <midi-player src="" sound-font="https://soundfont.saobby.com/midi" visualizer="#midi-visualizer" id="midi-player"></midi-player>
+                <midi-visualizer type="piano-roll" id="midi-visualizer"></midi-visualizer>
+            </div>
+            <div id="scpc-v2" show-trigger="false"></div>
+        </div>
+        <script src="/static/js/common.js" defer></script>
+        <script src="/static/js/midishow.js" defer></script>
+    </body>
+</html>

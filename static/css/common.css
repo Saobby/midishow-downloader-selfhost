@@ -1,0 +1,55 @@
+.result{
+    color: #aa0000;
+}
+.pre-like{
+    padding: 8px 12px;
+    font-size: 16px;
+    overflow-wrap: break-word;
+    border: 2px solid #ccc;
+    border-radius: 12px;
+}
+.pre-like-code{
+    padding: 8px 12px;
+    font-size: 14px;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    border: 2px solid #ccc;
+    border-radius: 12px;
+    -webkit-overflow-scrolling: touch;
+}
+.label{
+    margin-top: 3px;
+}
+.stopped{
+    color: #aa0000;
+}
+.processing{
+    color: #00aa00;
+}
+.waiting{
+    color: #ffaa00;
+}
+.result-pass{
+    background-color: #55ff55;
+    color: #ffffff;
+}
+.result-fail{
+    background-color: #ff5555;
+    color: #ffffff;
+}
+.result-testing{
+    background-color: #ddd605;
+    color: #ffffff;
+}
+.simple{
+    margin-left: 3px;
+}
+.no-border{
+    border: none;
+}
+.right{
+    float: right;
+}
+.middle{
+    vertical-align: middle;
+}

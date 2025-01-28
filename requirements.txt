@@ -1,0 +1,6 @@
+redis
+requests
+flask
+brotli
+bs4
+toml
