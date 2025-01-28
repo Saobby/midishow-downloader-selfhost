@@ -49,7 +49,7 @@ If you have any problems, please be free to let me know at [Issues](https://gith
 Please include the error log while reporting bugs.
 # Third-Party Licenses
 This project uses the following third-party libraries:  
-- wux-ui (Origin repo has been deleted)
+- wux-ui (Original repo has been deleted)
 - [tabler-icons](https://github.com/tabler/tabler-icons)
 - [Tone.js](https://www.npmjs.com/package/tone)
 - [@magenta/music](https://www.npmjs.com/package/@magenta/music)
