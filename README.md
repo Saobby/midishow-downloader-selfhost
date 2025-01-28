@@ -17,7 +17,7 @@ In general, you don't need to do extra configuration, just leave them default.
 4. Download midishow downloader  
 Download the latest build of the downloader.  
    - [32bit download](https://nightly.link/Saobby/midishow-downloader-selfhost/workflows/build.yaml/main/midishow_downloader-x86.zip)
-    - [64bit download](https://nightly.link/Saobby/midishow-downloader-selfhost/workflows/build.yaml/main/midishow_downloader-x86.zip)  
+    - [64bit download](https://nightly.link/Saobby/midishow-downloader-selfhost/workflows/build.yaml/main/midishow_downloader-x64.zip)
     
     If you don't know your computer's architecture, just download the `32-bit` version.  
     You are supposed to get a .zip archive. **Please extract it after you download.**
