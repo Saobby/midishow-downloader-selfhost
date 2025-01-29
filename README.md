@@ -47,6 +47,10 @@ Double click `./server.exe` to run the downloader.
 # Troubleshooting
 If you have any problems, please be free to let me know at [Issues](https://github.com/Saobby/midishow-downloader-selfhost/issues).  
 Please include the error log while reporting bugs.
+# Disclaimer
+This tool is built for only educational purpose. It is designed to preview midis conveniently since the midishow website has disabled midi preview function. Please respect intellectual property rights. **Do not repost the midi you download to other website without the author's permission. Do not sell the midi you download to others.** The developers of this project shall not be held liable for any damages, losses, or legal issues arising from the use or misuse of this tool. This includes, but is not limited to, any direct, indirect, incidental, or consequential damages. **Users assume all risks associated with the use of this tool.** This disclaimer may be updated or modified at any time without prior notice. Users are encouraged to review it periodically to stay informed about their responsibilities and obligations.
+# Contributing
+Please feel free to make any contributions.
 # Third-Party Licenses
 This project uses the following third-party libraries:  
 - wux-ui (Original repo has been deleted)
