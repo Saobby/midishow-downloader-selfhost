@@ -1,6 +1,7 @@
 # midishow-downloader-selfhost
  Automatically download midi files on midishow
 - - -
+[简体中文](https://github.com/Saobby/midishow-downloader-selfhost/blob/main/README_CHS.md)
 # Usage
 1. Set up Redis  
 Download and install Redis for Windows.  

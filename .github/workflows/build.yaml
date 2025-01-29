@@ -44,6 +44,7 @@ jobs:
         copy .\third_party_licenses\* dist\server
         copy .\LICENSE dist\server
         copy .\README.md dist\server
+        copy .\README_CHS.md dist\server
         copy .\dist\server.exe dist\server
         copy .\config.toml dist\server
 
