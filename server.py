@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, abort
 import json
 import random
 import redis_api
-import web_api
+import web_api_v2
 import base64
 import re
 from config import MIDISHOW_ACCOUNTS, SERVER_PORT, SERVER_HOST
@@ -32,29 +32,29 @@ def redis_set_val(db_session, key, val, ttl: int = None):
         db_session.expire(key, ttl)
 
 
-def web_save_cookies(db_session, req_session, username: str):
-    cookies = req_session.cookies.items()
+def web_save_cookies(db_session, cookies, username: str):
     redis_set_val(db_session, f"midishow_downloader_cookies_{username}", json.dumps(cookies), 24*3600)
 
 
-def get_req_session(username: str, password: str):
+def get_api_instance(username: str, password: str):
     db_session = redis_api.get_session()
     cookies = db_session.get(f"midishow_downloader_cookies_{username}")
     if cookies:
         cookies = json.loads(cookies)
         cookies = tuple(cookies)
-        req_session = web_api.gen_session(cookies)
+        api_instance = web_api_v2.MidiShowAPI()
+        api_instance.login_by_cookies(cookies)
         db_session.close()
-        return req_session
+        return api_instance
     else:
-        req_session = web_api.gen_session()
-        req_session = web_api.login(username, password, req_session)
-        if req_session is None:
+        api_instance = web_api_v2.MidiShowAPI()
+        res = api_instance.login_by_password(username, password)
+        if not res:
             db_session.close()
             return None
-        web_save_cookies(db_session, req_session, username)
+        web_save_cookies(db_session, api_instance.export_cookies(), username)
         db_session.close()
-        return req_session
+        return api_instance
 
 
 @app.route("/api/download_midi", methods=["post"])
@@ -66,22 +66,9 @@ def api_download_midi():
         return abort(400)
     if re.match("^https://www\\.midishow\\.com/midi/.+$", url) is None:
         return gen_returns(False, "请输入有效的页面地址"), 400
-    req_session = get_req_session(*random.choice(MIDISHOW_ACCOUNTS))
-    db_session = redis_api.get_session()
-    midi_id, midi_title, credit_remaining = web_api.get_midi_info(url, req_session)
-    if midi_id is None:
-        db_session.close()
-        return gen_returns(False, "无法获取 MIDI ID，请检查输入链接是否正确"), 500
-    credit_required = 3-credit_remaining
-    if credit_required > 0:
-        if not web_api.comment_midi(req_session, 209846, gen_random_str(16)):
-            return abort(500)
-    data = web_api.download_midi(midi_id, req_session)
-    if data is None:
-        db_session.close()
-        return abort(500)
+    api_instance = get_api_instance(*random.choice(MIDISHOW_ACCOUNTS))
+    data, midi_title = api_instance.download_midi(url)
     data_b64 = base64.b64encode(data).decode()
-    db_session.close()
     return gen_returns(True, "OK", {"file": data_b64, "title": midi_title})
 
 
