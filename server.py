@@ -49,7 +49,7 @@ def api_download_midi():
     url = request.json.get("url")
     if url is None:
         return abort(400)
-    if re.match("^https://www\\.midishow\\.com/midi/.+$", url) is None:
+    if re.match("^https://www\\.midishow\\.com/(en/|zh-tw/)?midi/.+$", url) is None:
         return gen_returns(False, "请输入有效的页面地址"), 400
     api_instance = get_api_instance(*random.choice(MIDISHOW_ACCOUNTS))
     if api_instance is None:
