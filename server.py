@@ -18,30 +18,11 @@ def gen_returns(success=True, message="OK", data=None, **kwargs):
     return json.dumps(ret)
 
 
-def gen_random_str(lens=64):
-    ret = ""
-    for i in range(lens):
-        ret += random.choice("1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
-    return ret
-
-
-def redis_set_val(db_session, key, val, ttl: int = None):
-    ttl = db_session.ttl(key) if ttl is None else ttl
-    db_session.set(key, val)
-    if ttl >= 0:
-        db_session.expire(key, ttl)
-
-
-def web_save_cookies(db_session, cookies, username: str):
-    redis_set_val(db_session, f"midishow_downloader_cookies_{username}", json.dumps(cookies), 24*3600)
-
-
 def get_api_instance(username: str, password: str):
     db_session = redis_api.get_session()
     cookies = db_session.get(f"midishow_downloader_cookies_{username}")
     if cookies:
-        cookies = json.loads(cookies)
-        cookies = tuple(cookies)
+        cookies = tuple(json.loads(cookies))
         api_instance = web_api_v2.MidiShowAPI()
         api_instance.login_by_cookies(cookies)
         db_session.close()
@@ -52,7 +33,11 @@ def get_api_instance(username: str, password: str):
         if not res:
             db_session.close()
             return None
-        web_save_cookies(db_session, api_instance.export_cookies(), username)
+        db_session.setex(
+            f"midishow_downloader_cookies_{username}",
+            24 * 3600,
+            json.dumps(api_instance.export_cookies())
+        )
         db_session.close()
         return api_instance
 
@@ -62,7 +47,7 @@ def api_download_midi():
     if request.json is None:
         return abort(400)
     url = request.json.get("url")
-    if None in [url]:
+    if url is None:
         return abort(400)
     if re.match("^https://www\\.midishow\\.com/midi/.+$", url) is None:
         return gen_returns(False, "请输入有效的页面地址"), 400
@@ -91,7 +76,7 @@ def error_404(err):
 
 @app.errorhandler(500)
 def error_500(err):
-    return gen_returns(False, "服务器内部错误!请发邮件到bugs@saobby.com以报告问题"), 500
+    return gen_returns(False, "服务器内部错误! 请携带错误日志前往 Github Issues 报告问题!"), 500
 
 
 @app.after_request
