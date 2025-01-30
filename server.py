@@ -67,7 +67,14 @@ def api_download_midi():
     if re.match("^https://www\\.midishow\\.com/midi/.+$", url) is None:
         return gen_returns(False, "请输入有效的页面地址"), 400
     api_instance = get_api_instance(*random.choice(MIDISHOW_ACCOUNTS))
-    data, midi_title = api_instance.download_midi(url)
+    if api_instance is None:
+        return gen_returns(False, "登录失败! 请检查用户名和密码是否设置正确!"), 500
+    try:
+        data, midi_title = api_instance.download_midi(url)
+    except:
+        return gen_returns(False, "无法下载 midi , 请检查链接是否正确!"), 500
+    if data is None:
+        return gen_returns(False, "你的账户被风控，请重新注册一个账户并设置好账户密码后重试!"), 500
     data_b64 = base64.b64encode(data).decode()
     return gen_returns(True, "OK", {"file": data_b64, "title": midi_title})
 
@@ -106,7 +113,7 @@ def index():
 
 
 def main():
-    port = random.randint(5000, 20000) if SERVER_PORT == -1 else SERVER_PORT
+    port = random.randint(10000, 20000) if SERVER_PORT == -1 else SERVER_PORT
     webbrowser.open(f"http://{SERVER_HOST}:{port}")
     app.run(port=port, host=SERVER_HOST)
 

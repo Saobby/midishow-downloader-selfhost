@@ -107,9 +107,8 @@ class MidiShowAPI:
                                      "X-Requested-With": "XMLHttpRequest"
                                  }),
                                  data={"id": midi_id})
-        if rsp1.status_code != 200:
-            print(rsp1.text)
-            return None
+        if rsp1.status_code == 403:
+            return None, None
         rsp2 = self.session.get(fake_midi_url
                                 .replace("https://www.midishow.com", "https://s.midishow.net")
                                 .replace(".mid?", ".js?"),
