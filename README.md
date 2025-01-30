@@ -46,7 +46,16 @@ Double click `./server.exe` to run the downloader.
    If everything goes well, your browser should automatically open the downloader's webpage.  
    Type in the midi's url and enjoy!
 # Troubleshooting
-If you have any problems, please be free to let me know at [Issues](https://github.com/Saobby/midishow-downloader-selfhost/issues).  
+1. Internal server error, and logs say `redis.exceptions.ConnectionError: Error 10061 connecting to 127.0.0.1:6379.`  
+Please make sure you have installed and started Redis. (Please see `Usage` section)  
+2. Failed to login  
+Please make sure you have set your midishow username and password in `config.toml`  
+3. Could not download midi. Please check if your link is correct.  
+Please type in the url of the viewing page of the midi, where you can see a piano keyboard, not the download page.
+4. Your account is under risk control.  
+Please register a new midishow account and retry.
+
+If you have any other problems, please be free to let me know at [Issues](https://github.com/Saobby/midishow-downloader-selfhost/issues).  
 Please include the error log while reporting bugs.
 # Disclaimer
 This tool is built for only educational purpose. It is designed to download midis conveniently. Please respect intellectual property rights. **Do not repost the midi you download to other website without the author's permission. Do not sell the midi you download to others.** The developers of this project shall not be held liable for any damages, losses, or legal issues arising from the use or misuse of this tool. This includes, but is not limited to, any direct, indirect, incidental, or consequential damages. **Users assume all risks associated with the use of this tool.** This disclaimer may be updated or modified at any time without prior notice. Users are encouraged to review it periodically to stay informed about their responsibilities and obligations.
