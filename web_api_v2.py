@@ -107,6 +107,7 @@ class MidiShowAPI:
                                      "X-Requested-With": "XMLHttpRequest"
                                  }),
                                  data={"id": midi_id})
+        rsp1.encoding = "utf-8"
         if rsp1.status_code == 403:
             return None, None
         rsp2 = self.session.get(fake_midi_url
