@@ -16,14 +16,16 @@ In general, you don't need to do extra configuration, just leave them default.
    But if you want to use a remote Redis server, please config it in `./config.toml`
 
 4. Download midishow downloader  
-Download the latest build of the downloader.  
+Download the latest release from [Release Page](https://github.com/Saobby/midishow-downloader-selfhost/releases)  
+OR  
+Download the latest build from Actions:    
    - [32bit download](https://nightly.link/Saobby/midishow-downloader-selfhost/workflows/build.yaml/main/midishow_downloader-x86.zip)
     - [64bit download](https://nightly.link/Saobby/midishow-downloader-selfhost/workflows/build.yaml/main/midishow_downloader-x64.zip)
     
     If you don't know your computer's architecture, just download the `32-bit` version.  
     You are supposed to get a .zip archive. **Please extract it after you download.**
 
-5. Set your midishow account  
+6. Set your midishow account  
 Open `config.toml` and put your midishow username and password below `midishow.accounts` section.  
    If you have multiple accounts, write like this:  
     ```toml
@@ -41,7 +43,7 @@ Open `config.toml` and put your midishow username and password below `midishow.a
     ```
    The downloader will use a random account every download.
 
-6. Start the downloader  
+7. Start the downloader  
 Double click `./server.exe` to run the downloader.  
    If everything goes well, your browser should automatically open the downloader's webpage.  
    Type in the midi's url and enjoy!
