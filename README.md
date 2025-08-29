@@ -71,3 +71,4 @@ This project uses the following third-party libraries:
 - [html-midi-player](https://www.npmjs.com/package/html-midi-player)
 
 Their licenses can be found at `./third_party_licenses`
+
