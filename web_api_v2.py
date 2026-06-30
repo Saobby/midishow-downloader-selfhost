@@ -25,7 +25,7 @@ def gen_req_headers(args=None):
         args = {}
     req_headers = {
         "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
-        "accept-encoding": "gzip, deflate, br, zstd",
+        "accept-encoding": "gzip, deflate, br",
         "accept-language": "zh-CN,zh;q=0.9",
         "connection": "keep-alive",
         "sec-ch-ua": '"Chromium";v="140", "Not=A?Brand";v="24", "Google Chrome";v="140"',
