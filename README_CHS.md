@@ -2,6 +2,9 @@
 自动下载 midishow 上的 midi 文件
 - - -
 [English](https://github.com/Saobby/midishow-downloader-selfhost/blob/main/README.md)
+- - -
+由于近期midishow启用了cloudflare风控，如果网页版和本地版工具无法使用，请使用[油猴脚本版本](https://github.com/Saobby/midishow-downloader-js)。
+- - -
 # 使用
 1. 设置 Redis
 下载并安装适用于 Windows 的 Redis。
@@ -15,8 +18,9 @@
 一般情况下，您不需要进行额外的配置，只需保留默认设置即可。
 但如果您想使用远程 Redis 服务器，请在 `./config.toml` 中进行配置
 
-4. 下载 midishow 下载器
-下载下载器的最新版本。
+4. 下载 midishow 下载器  
+从 [Release 页面](https://github.com/Saobby/midishow-downloader-selfhost/releases) 下载最新发行版或者  
+下载最新的自动构建版本。
 - [32 位下载](https://nightly.link/Saobby/midishow-downloader-selfhost/workflows/build.yaml/main/midishow_downloader-x86.zip)
 - [64 位下载](https://nightly.link/Saobby/midishow-downloader-selfhost/workflows/build.yaml/main/midishow_downloader-x64.zip)
 

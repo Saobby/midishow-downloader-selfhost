@@ -2,6 +2,9 @@
  Automatically download midi files on midishow
 - - -
 [简体中文](https://github.com/Saobby/midishow-downloader-selfhost/blob/main/README_CHS.md)
+- - -
+Due to Midishow recently implementing Cloudflare security measures, if the web-based or local versions of the tool are not working, please use the [Tampermonkey script version](https://github.com/Saobby/midishow-downloader-js) instead.
+- - -
 # Usage
 1. Set up Redis  
 Download and install Redis for Windows.  
